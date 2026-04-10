@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心情日记 - Web演示版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: #4a5568;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .nav {
+            display: flex;
+            background: #2d3748;
+        }
+        
+        .nav-item {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            color: #cbd5e0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .nav-item.active {
+            background: #4a5568;
+            color: white;
+        }
+        
+        .content {
+            padding: 20px;
+            min-height: 400px;
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .mood-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .mood-item {
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .mood-item:hover {
+            border-color: #4a5568;
+            transform: translateY(-2px);
+        }
+        
+        .mood-item.selected {
+            background: #4a5568;
+            color: white;
+            border-color: #4a5568;
+        }
+        
+        .diary-card {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        .diary-date {
+            font-weight: bold;
+            color: #4a5568;
+        }
+        
+        .diary-mood {
+            float: right;
+            font-size: 20px;
+        }
+        
+        .demo-data {
+            background: #e6fffa;
+            border: 1px solid #81e6d9;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📱 心情日记</h1>
+            <p>Web演示版本</p>
+        </div>
+        
+        <div class="nav">
+            <div class="nav-item active" onclick="showPage('calendar')">日历</div>
+            <div class="nav-item" onclick="showPage('diary')">日记</div>
+            <div class="nav-item" onclick="showPage('stats')">统计</div>
+        </div>
+        
+        <div class="content">
+            <!-- 日历页面 -->
+            <div id="calendar" class="page active">
+                <h3>📅 日历视图</h3>
+                <div class="demo-data">
+                    <p>在完整版本中，这里会显示月视图日历，每个日期上标记对应的心情图标。</p>
+                </div>
+                
+                <div class="mood-grid">
+                    <div class="mood-item">✨ 很开心</div>
+                    <div class="mood-item">☺ 开心</div>
+                    <div class="mood-item">◐ 平静</div>
+                    <div class="mood-item">☹ 难过</div>
+                    <div class="mood-item">😢 很难过</div>
+                </div>
+            </div>
+            
+            <!-- 日记页面 -->
+            <div id="diary" class="page">
+                <h3>📝 日记列表</h3>
+                
+                <div class="diary-card">
+                    <div class="diary-date">2024-04-09</div>
+                    <div class="diary-mood">✨</div>
+                    <p>今天项目顺利完成，团队合作很愉快！学到了很多新技术。</p>
+                    <div style="margin-top: 10px;">
+                        <span style="background: #e2e8f0; padding: 2px 8px; border-radius: 10px; font-size: 12px;">工作</span>
+                        <span style="background: #e2e8f0; padding: 2px 8px; border-radius: 10px; font-size: 12px;">学习</span>
+                    </div>
+                </div>
+                
+                <div class="diary-card">
+                    <div class="diary-date">2024-04-08</div>
+                    <div class="diary-mood">☺</div>
+                    <p>和朋友一起吃了顿美味的晚餐，聊了很多有趣的话题。</p>
+                    <div style="margin-top: 10px;">
+                        <span style="background: #e2e8f0; padding: 2px 8px; border-radius: 10px; font-size: 12px;">社交</span>
+                        <span style="background: #e2e8f0; padding: 2px 8px; border-radius: 10px; font-size: 12px;">美食</span>
+                    </div>
+                </div>
+                
+                <div class="diary-card">
+                    <div class="diary-date">2024-04-07</div>
+                    <div class="diary-mood">◐</div>
+                    <p>平静的一天，完成了日常任务，晚上看了会书。</p>
+                    <div style="margin-top: 10px;">
+                        <span style="background: #e2e8f0; padding: 2px 8px; border-radius: 10px; font-size: 12px;">学习</span>
+                        <span style="background: #e2e8f0; padding: 2px 8px; border-radius: 10px; font-size: 12px;">休息</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 统计页面 -->
+            <div id="stats" class="page">
+                <h3>📊 心情统计</h3>
+                
+                <div class="demo-data">
+                    <p><strong>心情分布（本月）</strong></p>
+                    <p>✨ 很开心: 2次</p>
+                    <p>☺ 开心: 3次</p>
+                    <p>◐ 平静: 5次</p>
+                    <p>☹ 难过: 1次</p>
+                    <p>😢 很难过: 0次</p>
+                </div>
+                
+                <div class="demo-data">
+                    <p><strong>连续记录: 7天</strong></p>
+                    <p>继续坚持记录心情吧！</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // 隐藏所有页面
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // 移除所有导航项的active类
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // 显示选中的页面
+            document.getElementById(pageId).classList.add('active');
+            
+            // 激活对应的导航项
+            event.target.classList.add('active');
+        }
+        
+        // 添加心情选择交互
+        document.querySelectorAll('.mood-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.mood-item').forEach(i => {
+                    i.classList.remove('selected');
+                });
+                this.classList.add('selected');
+            });
+        });
+    </script>
+</body>
+</html>
