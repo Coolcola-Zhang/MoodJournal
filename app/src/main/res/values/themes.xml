@@ -1,9 +1,30 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.MoodCalendar" parent="Theme.Material3.DayNight">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <!-- Base application theme for Jetpack Compose -->
+    <style name="Theme.MoodCalendar" parent="Theme.AppCompat.DayNight">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryDark">@color/purple_700</item>
+        <item name="colorAccent">@color/teal_200</item>
+        
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/purple_700</item>
+        
+        <!-- Customize your theme here -->
     </style>
-
-    <style name="Theme.MoodCalendar" parent="Base.Theme.MoodCalendar" />
+    
+    <!-- Light theme variant -->
+    <style name="Theme.MoodCalendar.Light" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryDark">@color/purple_700</item>
+        <item name="colorAccent">@color/teal_200</item>
+        <item name="android:statusBarColor">@color/purple_700</item>
+    </style>
+    
+    <!-- Dark theme variant -->
+    <style name="Theme.MoodCalendar.Dark" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimaryDark">@color/purple_500</item>
+        <item name="colorAccent">@color/teal_200</item>
+        <item name="android:statusBarColor">@color/purple_500</item>
+    </style>
 </resources>

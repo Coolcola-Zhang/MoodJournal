@@ -69,25 +69,28 @@ class DiaryListViewModel @Inject constructor(
         }
     }
     
-    private suspend fun applyFilters(entries: List<DiaryEntry>): List<DiaryEntry> {
+    private fun applyFilters(entries: List<DiaryEntry>): List<DiaryEntry> {
         var filtered = entries
         
         // 搜索过滤
         val searchQuery = _state.value.searchQuery
         if (searchQuery.isNotBlank()) {
-            filtered = repository.search(searchQuery).map { it }
+            filtered = filtered.filter {
+                it.content.contains(searchQuery, ignoreCase = true) ||
+                it.tags.any { tag -> tag.contains(searchQuery, ignoreCase = true) }
+            }
         }
         
         // 心情过滤
         val selectedMood = _state.value.selectedMood
         if (selectedMood != null) {
-            filtered = repository.getByMood(selectedMood.value).map { it }
+            filtered = filtered.filter { it.mood == selectedMood }
         }
         
         // 标签过滤
         val selectedTag = _state.value.selectedTag
         if (selectedTag != null) {
-            filtered = repository.getByTag(selectedTag).map { it }
+            filtered = filtered.filter { it.tags.contains(selectedTag) }
         }
         
         return filtered

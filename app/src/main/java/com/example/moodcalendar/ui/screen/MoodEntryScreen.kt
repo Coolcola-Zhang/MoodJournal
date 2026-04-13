@@ -1,6 +1,7 @@
 package com.example.moodcalendar.ui.screen
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -267,10 +268,9 @@ fun TagSelection(
             
             Spacer(modifier = Modifier.height(8.dp))
             
-            FlowRow(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+            Row(
+                modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 defaultTags.forEach { tag ->
                     TagChip(
@@ -294,16 +294,5 @@ fun TagChip(
         selected = isSelected,
         onClick = onToggle,
         label = { Text(tag) }
-    )
-}
-
-@Composable
-fun FlowRow(
-    modifier: Modifier = Modifier,
-    content: @Composable () -> Unit
-) {
-    androidx.compose.foundation.layout.FlowRow(
-        modifier = modifier,
-        content = content
     )
 }

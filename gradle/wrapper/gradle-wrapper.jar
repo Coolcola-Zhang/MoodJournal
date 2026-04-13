@@ -1,0 +1,7 @@
+# 这是一个占位符文件，实际需要下载 gradle-wrapper.jar
+# 请从官方Gradle网站下载或使用Android Studio自动生成
+
+# 要获取正确的gradle-wrapper.jar文件，请执行以下操作之一：
+# 1. 使用Android Studio打开项目，它会自动下载
+# 2. 从 https://services.gradle.org/distributions/ 下载
+# 3. 运行: gradle wrapper --gradle-version=8.5

@@ -1,11 +1,11 @@
 package com.example.moodcalendar.ui.screen
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.foundation.layout.FlowRow as ComposeFlowRow
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Clear
@@ -184,8 +184,9 @@ fun FilterBar(
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             
-            ComposeFlowRow(
-                modifier = Modifier.fillMaxWidth()
+            Row(
+                modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 defaultTags.forEach { tag ->
                     FilterChip(
@@ -280,8 +281,9 @@ fun DiaryCard(
             if (entry.tags.isNotEmpty()) {
                 Spacer(modifier = Modifier.height(8.dp))
                 
-                ComposeFlowRow(
-                    modifier = Modifier.fillMaxWidth()
+                Row(
+                    modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     entry.tags.forEach { tag ->
                         SuggestionChip(

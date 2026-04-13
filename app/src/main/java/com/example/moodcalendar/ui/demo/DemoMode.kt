@@ -66,8 +66,6 @@ fun DemoModeDialog(
                     Button(
                         onClick = {
                             isLoading = true
-                            // 模拟加载演示数据
-                            androidx.compose.ui.platform.LocalContext.current
                         },
                         modifier = Modifier.fillMaxWidth()
                     ) {
